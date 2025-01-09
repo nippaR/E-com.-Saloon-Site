@@ -4,6 +4,7 @@ import SlideShow from './Slide';
 import Header from './Header';
 import Cards from './Cards';
 import Contact from './Contact';
+import Gallary from './Gallary';
 
 function HomePage() {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -61,6 +62,13 @@ function HomePage() {
 
       <Box>
         <Cards />
+      </Box>
+      
+      <Box>
+        <Typography sx={{fontFamily:'poppins', fontWeight:'bold', fontSize:'1.2rem', mt: 5, ml: 12}}>
+          Our Gallery :
+        </Typography>
+        <Gallary />
       </Box>
 
       < Contact />
