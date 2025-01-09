@@ -2,99 +2,145 @@ import { Box, Grid, Typography,Stack,TextField, Button } from "@mui/material";
 import React from "react";
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import Tiktok from '../Images/tk.png';
+import CallIcon from '@mui/icons-material/Call';
+import PlaceIcon from '@mui/icons-material/Place';
 
 
 function Contact() {
-
     return (
-        <Box sx={{ml:10,my: 10,backgroundColor: '#FF6E00', width: '90%', height: '700px', borderRadius: '10px' }}>
-
-            <Typography sx={{ fontWeight: 'bold', fontSize: '5rem', color: '#FFFF66', ml:5, fontFamily:'poppins' }}>
+        <Box sx={{ ml: 5, my: 10, backgroundColor: '#FF6E00', width: '95%', height: '720px', borderRadius: '10px' }}>
+            <Typography sx={{ fontWeight: 'bold', fontSize: '5rem', color: '#FFFF66', ml: 5, fontFamily: 'poppins' }}>
                 Contact:
             </Typography>
+            
 
             <Grid>
-                <Stack direction="row" spacing={2} sx={{ml:5, gap: 65}}>
+                <Stack direction="row" spacing={2} sx={{ gap: 55 }}>
+                    <Box>
+                        <Stack direction="row" spacing={2} sx={{ ml: 5, mt: 15 }}>
+                            <FacebookOutlinedIcon
+                                sx={{
+                                    fontSize: '5rem',
+                                    mt: 20,
+                                    color: '#ffff66',
+                                    transition: 'transform 0.3s ease-in-out',
+                                    '&:hover': { transform: 'scale(1.2)' }
+                                }}
+                            />
 
-                    <Box >
-                        <FacebookOutlinedIcon sx={{fontSize: '5rem', mt:20,color:'#ffff66',
-                                                transition: 'transform 0.3s ease-in-out','&:hover': {transform: 'scale(1.2)'}}}/>
+                            <InstagramIcon
+                                sx={{
+                                    fontSize: '5rem',
+                                    ml: 2,
+                                    color: '#ffff66',
+                                    transition: 'transform 0.3s ease-in-out',
+                                    '&:hover': { transform: 'scale(1.2)' }
+                                }}
+                            />
 
-                        <InstagramIcon sx={{fontSize: '5rem', color: '#ffff66', ml:2,
-                                            transition: 'transform 0.3s ease-in-out','&:hover': {transform: 'scale(1.2)'}
-                        }}/>
+                            <Box>
+                                <img
+                                    src={Tiktok}
+                                    alt="Tiktok"
+                                    style={{
+                                        width: '70px',
+                                        height: '70px',
+                                        marginLeft: '16px',
+                                        transition: 'transform 0.3s ease-in-out',
+                                        '&:hover': { transform: 'scale(1.2)' }
+                                    }}
+                                />
+                            </Box>
+                        </Stack>
                         
+                        <Stack direction="row" spacing={2} justifyContent= 'center' sx={{  mt: 15, ml: 2  ,transition: 'transform 0.3s ease-in-out', '&:hover': { transform: 'scale(1.2)' }}}>
+                            <CallIcon sx={{ fontSize: '4rem', mt: 15,color:'#ffff66',
+                                              }} />            
+                            <Typography sx={{fontSize:'1.7rem', color:'white',fontWeight:'bold'
+                                            
+                            }}>+123-456-789-10</Typography>
+
+                        </Stack>
+
+                        <Stack direction="row" spacing={2} justifyContent= 'center' sx={{ ml: 5, mt: 10,  transition: 'transform 0.3s ease-in-out', '&:hover': { transform: 'scale(1.2)' }}}>
+                        <PlaceIcon sx={{ fontSize: '4rem', mt: 15, ml: 5,color:'#ffff66',}} />
+                        <Typography sx={{fontSize:'1.7rem', color:'white',fontWeight:'bold'}}>123, Main Street, <br/>New York, USA</Typography>
+                        </Stack>   
+
                     </Box>
 
-
-                    <Box sx={{border:' 1px solid white', p:5, borderRadius: '15px', mt:0}}>
+                    <Box sx={{ border: '1px solid white', p: 5, borderRadius: '15px', mt: -10 }}>
                         <TextField
-                                id="outlined-basic"
-                                variant="outlined"
-                                label = "Name"
-                                sx={{
-                                    width: '400px',
-                                    '& .MuiOutlinedInput-root': {
-                                        backgroundColor: 'hsla(60, 100.00%, 51.00%, 0.5)',
-                                        color: 'white',
-                                        '& fieldset': {
-                                            borderColor: 'white',
-                                        },
-                                        '&:hover fieldset': {
-                                            borderColor: 'white',
-                                        },
-                                        '&.Mui-focused fieldset': {
-                                            borderColor: 'white',
-                                        },
+                            id="outlined-basic"
+                            variant="outlined"
+                            label="Name"
+                            sx={{
+                                width: '400px',
+                                '& .MuiOutlinedInput-root': {
+                                    backgroundColor: 'hsla(60, 100.00%, 51.00%, 0.5)',
+                                    color: 'white',
+                                    '& fieldset': {
+                                        borderColor: 'white',
                                     },
-                                    my: 5, borderRadius: '10px'
-                                }}
-                            />
-                            <br/>
-
-                         <TextField
-                                id="outlined-basic"
-                                variant="outlined"
-                                label = "Type Here Your Message"
-                                multiline
-                                rows={4}
-                                sx={{
-                                    width: '400px',
-                                    '& .MuiOutlinedInput-root': {
-                                        backgroundColor: 'hsla(60, 100.00%, 51.00%, 0.5)',
-                                        color: 'white',
-                                        '& fieldset': {
-                                            borderColor: 'white',
-                                        },
-                                        '&:hover fieldset': {
-                                            borderColor: 'white',
-                                        },
-                                        '&.Mui-focused fieldset': {
-                                            borderColor: 'white',
-                                        },
-                                        borderRadius: '10px'
+                                    '&:hover fieldset': {
+                                        borderColor: 'white',
                                     },
-                                }}
-                            />
-                            <br/>
-                            <Button variant="contained" sx={{backgroundColor: 'hsla(60, 100.00%, 51.00%, 0.5)',
-                                                             color: 'black', 
-                                                             fontWeight: 'bold', 
-                                                             mt: 5, 
-                                                             borderRadius: '15px', border: '1px solid white',
-                                                             width: '150px',
-                                                             ml: 31.5}}>
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: 'white',
+                                    },
+                                },
+                                my: 5,
+                                borderRadius: '10px'
+                            }}
+                        />
+                        <br />
 
-                                Send
-                            </Button>    
+                        <TextField
+                            id="outlined-basic"
+                            variant="outlined"
+                            label="Type Here Your Message"
+                            multiline
+                            rows={4}
+                            sx={{
+                                width: '400px',
+                                '& .MuiOutlinedInput-root': {
+                                    backgroundColor: 'hsla(60, 100.00%, 51.00%, 0.5)',
+                                    color: 'white',
+                                    '& fieldset': {
+                                        borderColor: 'white',
+                                    },
+                                    '&:hover fieldset': {
+                                        borderColor: 'white',
+                                    },
+                                    '&.Mui-focused fieldset': {
+                                        borderColor: 'white',
+                                    },
+                                    borderRadius: '10px'
+                                },
+                            }}
+                        />
+                        <br />
+                        <Button
+                            variant="contained"
+                            sx={{
+                                backgroundColor: 'hsla(60, 100.00%, 51.00%, 0.5)',
+                                color: 'black',
+                                fontWeight: 'bold',
+                                mt: 5,
+                                borderRadius: '15px',
+                                border: '1px solid white',
+                                width: '150px',
+                                ml: 31.5
+                            }}
+                        >
+                            Send
+                        </Button>
                     </Box>
-
-                </Stack>    
+                </Stack>
             </Grid>
-
         </Box>
     );
 }
-
 
 export default Contact;
