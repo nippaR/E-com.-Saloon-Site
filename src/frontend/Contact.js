@@ -5,14 +5,18 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import Tiktok from '../Images/tk.png';
 import CallIcon from '@mui/icons-material/Call';
 import PlaceIcon from '@mui/icons-material/Place';
+import { motion } from 'framer-motion';
 
+
+const MotionTypography = motion(Typography);
 
 function Contact() {
     return (
         <Box sx={{ ml: 5, my: 10, backgroundColor: '#FF6E00', width: '95%', height: '720px', borderRadius: '10px' }}>
-            <Typography sx={{ fontWeight: 'bold', fontSize: '5rem', color: '#FFFF66', ml: 5, fontFamily: 'poppins' }}>
+            <MotionTypography sx={{ fontWeight: 'bold', fontSize: '5rem', color: '#FFFF66', ml: 5, fontFamily: 'poppins' }}
+            whileHover={{ scale: 1.1,transition: { duration: 0.3 } }}>
                 Contact:
-            </Typography>
+            </MotionTypography>
             
 
             <Grid>
@@ -39,7 +43,7 @@ function Contact() {
                                 }}
                             />
 
-                            <Box>
+                            <motion.Box whileHover={{ scale: 1.1, originX:0, originY:0 ,transition: { duration: 0.5 } }}>
                                 <img
                                     src={Tiktok}
                                     alt="Tiktok"
@@ -47,11 +51,9 @@ function Contact() {
                                         width: '70px',
                                         height: '70px',
                                         marginLeft: '16px',
-                                        transition: 'transform 0.3s ease-in-out',
-                                        '&:hover': { transform: 'scale(1.2)' }
                                     }}
                                 />
-                            </Box>
+                            </motion.Box>
                         </Stack>
                         
                         <Stack direction="row" spacing={2} justifyContent= 'center' sx={{  mt: 15, ml: 2  ,transition: 'transform 0.3s ease-in-out', '&:hover': { transform: 'scale(1.2)' }}}>
