@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { } from 'react';
 import { Box, Typography } from '@mui/material';
 import { motion } from 'framer-motion';
 import Header from './Header';
@@ -7,63 +7,73 @@ import Cards from './Cards';
 import Gallary from './Gallary';
 import Contact from './Contact';
 
+
+
+const MotionTypography= motion(Typography); 
+const MotionBox = motion(Box);
+
+
 const variantContainer = {
   hidden: {
     opacity: 0,
+    y:20
   },
   visible: {
     opacity: 1,
+    y:0,
     transition: {
-      delay: 0.5,
+      delay: 0.3,
       duration: 1.5,
     },
   },
 };
 
 function HomePage() {
-  const [scrollPosition, setScrollPosition] = useState(0);
+//   const [scrollPosition, setScrollPosition] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
+//   useEffect(() => {
+//     const handleScroll = () => {
+//       setScrollPosition(window.scrollY);
+//     };
 
-    window.addEventListener('scroll', handleScroll);
+//     window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+//     return () => {
+//       window.removeEventListener('scroll', handleScroll);
+//     };
+//   }, []);
 
   return (
     <Box sx={{ backgroundColor: '#ffff66', position: 'relative', overflow: 'hidden' }}>
       <Header />
-      <Typography
+      <MotionTypography
+        variants={variantContainer}
+        initial="hidden"
+        animate="visible"
         variant="h1"
         align="center"
         sx={{
           mt: 5,
-          transition: '0.4s',
-          transform: `translateY(${scrollPosition * -0.1}px) scale(${1 - scrollPosition / 1000})`,
         }}
       >
         Bright Your Skin
-      </Typography>
+      </MotionTypography>
 
-      <Typography
+      <MotionTypography
+        variants={variantContainer}
+        initial="hidden"
+        animate="visible"
         variant="h1"
         align="center"
         sx={{
           mt: 0,
           fontWeight: 'bold',
-          transition: '0.4s',
-          transform: `translateY(${scrollPosition * -0.1}px) scale(${1 - scrollPosition / 1000})`,
         }}
       >
         With US.
-      </Typography>
+      </MotionTypography>
 
-      <motion.Box
+      <MotionBox
         variants={variantContainer}
         initial="hidden"
         animate="visible"
@@ -73,7 +83,7 @@ function HomePage() {
           25% Offer ToDay <br />
           <Box sx={{ fontWeight: 'bold' }}>Book Now</Box>
         </Typography>
-      </motion.Box>
+      </MotionBox>
 
       <Box sx={{ mt: 5 }}>
         <SlideShow />
