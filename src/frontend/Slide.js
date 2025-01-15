@@ -4,8 +4,12 @@ import Box from '@mui/material/Box';
 import ButtonBase from '@mui/material/ButtonBase';
 import Typography from '@mui/material/Typography';
 import IMG1 from '../Images/1.jpeg';
+import { motion } from 'framer-motion';
+
 // import IMG2 from '../Images/2.jpg';
 // import IMG3 from '../Images/3.webp';
+
+const MotionBox = motion(Box);
 
 const images = [
   {
@@ -24,6 +28,22 @@ const images = [
 //     width: '30%',
 //   },
 ];
+
+
+const variantContainer = {
+  hidden: {
+    opacity: 0,
+    y:20
+  },
+  visible: {
+    opacity: 1,
+    y:0,
+    transition: {
+      delay: 0.3,
+      duration: 1.5,
+    },
+  },
+};
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: 'relative',
@@ -95,7 +115,11 @@ const ImageMarked = styled('span')(({ theme }) => ({
 
 export default function ButtonBaseDemo() {
   return (
-    <Box sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%', justifyContent: 'center' }}>
+    <MotionBox 
+    variants={variantContainer}
+    initial="hidden"
+    animate="visible"
+    sx={{ display: 'flex', flexWrap: 'wrap', minWidth: 300, width: '100%', justifyContent: 'center' }}>
       {images.map((image) => (
         <ImageButton
           focusRipple
@@ -124,6 +148,6 @@ export default function ButtonBaseDemo() {
           </Image>
         </ImageButton>
       ))}
-    </Box>
+    </MotionBox>
   );
 }
