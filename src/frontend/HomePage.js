@@ -29,19 +29,8 @@ const variantContainer = {
 };
 
 function HomePage() {
-//   const [scrollPosition, setScrollPosition] = useState(0);
 
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       setScrollPosition(window.scrollY);
-//     };
 
-//     window.addEventListener('scroll', handleScroll);
-
-//     return () => {
-//       window.removeEventListener('scroll', handleScroll);
-//     };
-//   }, []);
 
   return (
     <Box sx={{ backgroundColor: '#ffff66', position: 'relative', overflow: 'hidden' }}>
@@ -107,10 +96,3 @@ function HomePage() {
 
 export default HomePage;
 
-
-/*### Key Changes:
-- **Motion Box**: Added `whileHover` directly to the `motion.Box` to ensure the hover effect is applied correctly.
-- **Imports**: Ensured all necessary components are imported and used correctly.
-- **Variant Container**: Defined `variantContainer` to manage animation states.
-
-This should resolve the error and ensure that the animations work as expected. If the issue persists, double-check that all dependencies are correctly installed and up-to-date.*/

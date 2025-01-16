@@ -1,65 +1,49 @@
-import React from 'react';
-import { Box,Button,Grid,Typography } from '@mui/material';
-import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { Box, Grid, Typography } from '@mui/material';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
-const MotionTypography = motion(Typography);
-const MotionButton = motion(Button);
 const MotionBox = motion(Box);
+const MotionTypography = motion(Typography);
 
-const useScroll = () => {
-    const [state, setState] = React.useState({
-        x: window.scrollX,
-        y: window.scrollY,
+function Review() {
+    const { ref, inView } = useInView({
+        threshold: 0.2,
     });
+    const animation = useAnimation();
 
-    React.useEffect(() => {
-        const onScroll = () => {
-            setState({ x: window.scrollX, y: window.scrollY });
-        };
-        window.addEventListener('scroll', onScroll);
+    useEffect(() => {
+        if (inView) {
+            animation.start({
+                x: 0,
+                transition: {
+                    type: 'spring', stiffness: 120
+                }
+            });
+        } if (!inView) {
+            animation.start({ x: '-100vw' });
+        }
+        console.log("use effect view", inView);
+    }, [inView, animation]);
 
-        return () => {
-            window.removeEventListener('scroll', onScroll);
-        };
-    }, []);
-
-    return state;
-};  
-export default function Review() {
     return (
-        <Box>
-            <Grid  sx={{ display: 'flex', 
-                        justifyContent: 'center', 
-                        alignItems: 'center',
-                        backgroundColor: 'pink', 
-                        padding: '10px', 
-                        width: '100%',
-                        height: 800}}>
-                <MotionBox 
-                    whileHover={{ scale: 1.1, originX: 0, originY: 0, transition: { duration: 0.5 } }} 
-                    
-                >
-                    <h1>Review</h1>
-                </MotionBox>
-            </Grid>
-
-            <section>
-            <Grid sx={{ display: 'flex', 
-                        justifyContent: 'center', 
-                        alignItems: 'center',
-                        backgroundColor: 'lightblue', 
-                        padding: '10px', 
-                        width: '100%',
-                        height: 500}}>
-                <MotionTypography whileHover={{ scale: 1.1, originX:0,transition: { duration: 0.3 } }}>
-                fuck u
+        <Grid>
+            <MotionBox sx={{ backgroundColor: '#FF6E00', width: '95%', height: '650px', borderRadius: '10px', ml: 5, my: 5 }}>
+                <MotionTypography>
+                    {/* Additional content can go here */}
                 </MotionTypography>
-            </Grid>
-            </section>
+            </MotionBox>
 
-            <MotionButton>
-                  WOW
-            </MotionButton>
-        </Box>
+            <MotionBox sx={{ backgroundColor: '#FF6E00', width: '95%', height: '650px', borderRadius: '10px', ml: 5, my: 5 }}
+                ref={ref}>
+                <MotionTypography sx={{ textAlign: 'center' }}
+                    animate={animation}>
+                    Review
+                    Here is a review of the product
+                </MotionTypography>
+            </MotionBox>
+        </Grid>
     );
 }
+
+export default Review;
