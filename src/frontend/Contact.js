@@ -14,7 +14,7 @@ function Contact() {
     return (
         <Box sx={{ ml: 5, my: 10, backgroundColor: '#FF6E00', width: '95%', height: '720px', borderRadius: '10px' }}>
             <MotionTypography sx={{ fontWeight: 'bold', fontSize: '5rem', color: '#FFFF66', ml: 5, fontFamily: 'poppins' }}
-            whileHover={{ scale: 1.1,transition: { duration: 0.3 } }}>
+            whileHover={{ scale: 1.1,originX:0,transition: { duration: 0.3 } }}>
                 Contact:
             </MotionTypography>
             

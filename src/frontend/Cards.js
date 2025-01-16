@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import star from '../Images/star.png';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 
-
+const MotionBox = motion(Box);
+const MotionTypography = motion(Typography);
 
 const cards = [
     {
@@ -36,6 +39,7 @@ const cards = [
 // Star Count function
 
 function StarRating({ count }) {
+
     return (
         <Box sx={{ml:5, mt: 2 }}>
             {Array.from({ length: count }).map((_, index) => (
@@ -51,21 +55,46 @@ function StarRating({ count }) {
 
 function Cards() {
 
+    const { ref, inView } = useInView({
+        threshold: 0.2,
+    });
+    const animation = useAnimation();
+
+    useEffect(() => {
+        if (inView) {
+            animation.start({
+                y: 0,
+                opacity: 1,
+                transition: {
+                    type: 'spring', stiffness: 120
+                }
+            });
+        } if (!inView) {
+            animation.start({ 
+                y:50,
+                opacity: 0,
+                
+            });
+        }
+        console.log("use effect view", inView);
+    }, [inView, animation]);
+
     return (
 
         <Box>
 
-            <Typography sx={{ ml:10,mt: 10, fontWeight: 'bold', fontSize: '1.3rem' }}>
+            <MotionTypography sx={{ ml:10,mt: 10, fontWeight: 'bold', fontSize: '1.3rem' }}  >
             Coustomer Feedbacks :
-            </Typography>
+            </MotionTypography>
 
-            <Stack direction="row" spacing={2} sx={{alignItems: "center", justifyContent: "center", mt: 3, ml: 5,gap: 5}}>
+            <Stack direction="row" spacing={2} sx={{alignItems: "center", justifyContent: "center", mt: 3, ml: 5,gap: 5}} ref={ref}>
                 {cards.map((c) => (
 
-                <Box sx={{ backgroundColor: 'rgb(255, 255, 255 , 0.9)', 
+                <MotionBox sx={{ backgroundColor: 'rgb(255, 255, 255 , 0.9)', 
                         height: 270, width: 210,
                         mt: 5, ml: 10,
-                        borderRadius: 3, '&:hover': {transform:'scale(1.1)'}, transition: '0.4s', boxShadow: 3}}>
+                        borderRadius: 3 }}
+                        animate={animation}>
 
                     <Box key={c.title}>
                             
@@ -91,7 +120,7 @@ function Cards() {
                     </Box>
                 
                 
-                </Box>
+                </MotionBox>
                 ))} 
 
             </Stack>
